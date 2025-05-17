@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTalk Blog</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #333333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 76px;
+            background-color: #ffffff;
+            box-shadow: 0px -2px 0px #eff2f2;
+            z-index: 1000;
+        }
+
+        .header-line {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background-color: #eff5fb;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            height: 36px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            font-size: 14px;
+            font-weight: 500;
+            color: #333333;
+            text-decoration: none;
+        }
+
+        .nav-menu a:hover {
+            color: #03b2a5;
+        }
+
+        .nav-menu .dropdown {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .cta-button {
+            background-color: #e3f5f5;
+            border-radius: 4px;
+            padding: 14px 20px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #03b2a5;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #d0efef;
+        }
+
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            margin-top: 92px;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumbs a {
+            font-size: 12px;
+            color: rgba(51, 51, 51, 0.7);
+            text-decoration: none;
+        }
+
+        .breadcrumbs img {
+            margin: 0 8px;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        /* Filter Tags */
+        .filter-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 30px;
+        }
+
+        .tag {
+            display: flex;
+            align-items: center;
+            height: 32px;
+            padding: 0 16px;
+            border-radius: 16px;
+            border: 1px solid #c1c5cd;
+            font-size: 14px;
+            font-weight: 600;
+            color: #333333;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tag:hover {
+            background-color: #f9fdfd;
+        }
+
+        .tag.active {
+            border: 2px solid #16c8bb;
+            background-color: #f9fdfd;
+        }
+
+        .tag img {
+            margin-right: 8px;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .blog-card {
+            display: flex;
+            flex-direction: column;
+            border-radius: 0 0 16px 16px;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-image {
+            height: 259px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .blog-tags {
+            position: relative;
+            margin-top: -32px;
+            margin-left: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 8px;
+            z-index: 1;
+        }
+
+        .blog-tag {
+            display: flex;
+            align-items: center;
+            height: 32px;
+            padding: 0 16px;
+            border-radius: 16px;
+            border: 1px solid #c1c5cd;
+            background-color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            font-weight: 600;
+            color: #333333;
+        }
+
+        .blog-tag img {
+            margin-right: 8px;
+        }
+
+        .blog-content {
+            padding: 16px;
+            border: 1px solid #dedede;
+            border-top: none;
+            border-radius: 0 0 16px 16px;
+            background-color: #ffffff;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-title {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 26px;
+            margin-bottom: 10px;
+        }
+
+        .blog-author {
+            font-size: 12px;
+            color: #494949;
+            margin-bottom: 8px;
+        }
+
+        .blog-excerpt {
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .blog-date {
+            font-size: 12px;
+            color: #868686;
+        }
+
+        /* Load More Button */
+        .load-more {
+            display: block;
+            width: 182px;
+            height: 48px;
+            margin: 0 auto 40px;
+            background-color: #35b3a9;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .load-more:hover {
+            background-color: #2a9089;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2963a3;
+            color: #ffffff;
+            padding: 40px 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-divider {
+            height: 1px;
+            background-color: rgba(157, 157, 157, 0.3);
+            margin: 20px 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .footer-column h3 {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .footer-column a:hover {
+            text-decoration: underline;
+        }
+
+        .newsletter h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+
+        .newsletter p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            height: 48px;
+            padding: 0 16px;
+            border: 1px solid rgba(157, 157, 157, 0.2);
+            border-radius: 4px 0 0 4px;
+            font-size: 14px;
+        }
+
+        .newsletter-button {
+            width: 64px;
+            height: 48px;
+            background-color: #16c8bb;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .newsletter-button:hover {
+            background-color: #14b5a9;
+        }
+
+        .newsletter-disclaimer {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 18px;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .footer-copyright {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-icon {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+
+        .social-icon:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        @media (max-width: 1024px) {
+            .blog-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-container">
+            <a href="/">
+                <img src="../assets_blog/images/img_logo.svg" alt="YouTalk Logo" class="logo">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Тарифы</a></li>
+                    <li><a href="#">Для бизнеса</a></li>
+                    <li><a href="#">Психологам</a></li>
+                    <li><a href="#">Сертификат</a></li>
+                    <li>
+                        <div class="dropdown">
+                            <a href="#">Материалы</a>
+                            <img src="../assets_blog/images/img_frame.svg" alt="Dropdown">
+                        </div>
+                    </li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </nav>
+            <a href="#" class="cta-button">Подобрать психолога</a>
+        </div>
+        <div class="header-line"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Breadcrumbs -->
+        <div class="breadcrumbs">
+            <a href="#">Главная</a>
+            <img src="../assets_blog/images/img_arrow.svg" alt="Arrow">
+            <a href="#">Блог</a>
+        </div>
+
+        <!-- Page Title -->
+        <h1 class="page-title">Блог</h1>
+
+        <!-- Filter Tags -->
+        <div class="filter-tags">
+            <div class="tag">
+                <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                <span>Все</span>
+            </div>
+            <div class="tag">
+                <span>Самооценка и самопринятие</span>
+            </div>
+            <div class="tag active">
+                <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                <span>Self</span>
+            </div>
+            <div class="tag">
+                <span>Чувства и эмоции</span>
+            </div>
+            <div class="tag">
+                <span>Тревога</span>
+            </div>
+            <div class="tag">
+                <span>Упражнения</span>
+            </div>
+            <div class="tag">
+                <span>Психология питания</span>
+            </div>
+            <div class="tag">
+                <span>Насилие</span>
+            </div>
+            <div class="tag">
+                <span>Личное здоровье</span>
+            </div>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="blog-grid">
+            <!-- Blog Card 1 -->
+            <div class="blog-card">
+                <img src="../assets_blog/images/img_rectangle_259x588.png" alt="Эмоциональное выгорание" class="blog-image">
+                <div class="blog-tags">
+                    <div class="blog-tag">
+                        <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                        <span>Самооценка и самопринятие</span>
+                    </div>
+                    <div class="blog-tag">
+                        <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                        <span>Self</span>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h2 class="blog-title">Эмоциональное выгорание – стадии и симптомы, методы восстановления и профилактики</h2>
+                    <p class="blog-author">Автор: Лиза Файнтух</p>
+                    <p class="blog-excerpt">Изначально термин «эмоциональное профессиональной сфере и относился...</p>
+                    <p class="blog-date">21.08.2021</p>
+                </div>
+            </div>
+
+            <!-- Blog Card 2 -->
+            <div class="blog-card">
+                <img src="../assets_blog/images/img_rectangle_2.png" alt="Как не утонуть в тревоге" class="blog-image">
+                <div class="blog-tags">
+                    <div class="blog-tag">
+                        <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                        <span>Self</span>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h2 class="blog-title">Как не утонуть в тревоге и управлять своими страхами</h2>
+                    <p class="blog-author">Автор: Екатерина Бельтюкова</p>
+                    <p class="blog-excerpt">Один из самых важных навыков, которые может дать работа с психотерапевтом - умение в разных ситуациях по-разному обходиться ...</p>
+                    <p class="blog-date">11.08.2021</p>
+                </div>
+            </div>
+
+            <!-- Blog Card 3 -->
+            <div class="blog-card">
+                <img src="../assets_blog/images/img_image_1.png" alt="Эмоциональное выгорание" class="blog-image">
+                <div class="blog-tags">
+                    <div class="blog-tag">
+                        <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                        <span>Самооценка и самопринятие</span>
+                    </div>
+                    <div class="blog-tag">
+                        <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                        <span>Психология питания</span>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h2 class="blog-title">Эмоциональное выгорание – стадии и симптомы, методы восстановления и профилактики</h2>
+                    <p class="blog-author">Автор: Лиза Файнтух</p>
+                    <p class="blog-excerpt">Изначально термин «эмоциональное профессиональной сфере и относился...</p>
+                    <p class="blog-date">21.08.2021</p>
+                </div>
+            </div>
+
+            <!-- Blog Card 4 -->
+            <div class="blog-card">
+                <img src="../assets_blog/images/img_rectangle_259x384.png" alt="Как не утонуть в тревоге" class="blog-image">
+                <div class="blog-tags">
+                    <div class="blog-tag">
+                        <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                        <span>Self</span>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h2 class="blog-title">Как не утонуть в тревоге и управлять своими страхами</h2>
+                    <p class="blog-author">Автор: Екатерина Бельтюкова</p>
+                    <p class="blog-excerpt">Один из самых важных навыков, которые может дать работа с психотерапевтом - умение в разных ситуациях по-разному обходиться ...</p>
+                    <p class="blog-date">11.08.2021</p>
+                </div>
+            </div>
+
+            <!-- Blog Card 5 -->
+            <div class="blog-card">
+                <img src="../assets_blog/images/img_rectangle_1.png" alt="Как управлять своими эмоциями" class="blog-image">
+                <div class="blog-tags">
+                    <div class="blog-tag">
+                        <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                        <span>Self</span>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h2 class="blog-title">Как управлять своими эмоциями:<br>8 шагов</h2>
+                    <p class="blog-author">Автор: Екатерина Бельтюкова</p>
+                    <p class="blog-excerpt">Клиенты часто спрашивают, как КОНТРОЛИРОВАТЬ свои негативные эмоции. Пришло время об этом написать!</p>
+                    <p class="blog-date">07.08.2021</p>
+                </div>
+            </div>
+
+            <!-- Blog Card 6 -->
+            <div class="blog-card">
+                <img src="../assets_blog/images/img_rectangle.png" alt="Эмоциональное выгорание" class="blog-image">
+                <div class="blog-tags">
+                    <div class="blog-tag">
+                        <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                        <span>Self</span>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h2 class="blog-title">Эмоциональное выгорание – стадии и симптомы, методы восстановления и профилактики</h2>
+                    <p class="blog-author">Автор: Лиза Файнтух под редакцией Екатерины Бельтюковой</p>
+                    <p class="blog-excerpt">Изначально термин «эмоциональное я...</p>
+                    <p class="blog-date">21.08.2021</p>
+                </div>
+            </div>
+
+            <!-- Blog Card 7 -->
+            <div class="blog-card">
+                <img src="../assets_blog/images/img_image.png" alt="Как не утонуть в тревоге" class="blog-image">
+                <div class="blog-tags">
+                    <div class="blog-tag">
+                        <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                        <span>Self</span>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h2 class="blog-title">Как не утонуть в тревоге и управлять своими страхами</h2>
+                    <p class="blog-author">Автор: Екатерина Бельтюкова</p>
+                    <p class="blog-excerpt">Один из самых важных навыков, которые может дать работа с психотерапевтом - умение в разных ситуациях по-разному обходиться ...</p>
+                    <p class="blog-date">11.08.2021</p>
+                </div>
+            </div>
+
+            <!-- Blog Card 8 -->
+            <div class="blog-card">
+                <img src="../assets_blog/images/img_image_259x384.png" alt="Как управлять своими эмоциями" class="blog-image">
+                <div class="blog-tags">
+                    <div class="blog-tag">
+                        <img src="../assets_blog/images/img_typeunicorn.png" alt="Icon">
+                        <span>Self</span>
+                    </div>
+                </div>
+                <div class="blog-content">
+                    <h2 class="blog-title">Как управлять своими эмоциями:<br>8 шагов</h2>
+                    <p class="blog-author">Автор: Екатерина Бельтюкова</p>
+                    <p class="blog-excerpt">Клиенты часто спрашивают, как КОНТРОЛИРОВАТЬ свои негативные эмоции. Пришло время об этом написать!</p>
+                    <p class="blog-date">07.08.2021</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Load More Button -->
+        <button class="load-more">Ещё</button>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>О нас</h3>
+                    <ul>
+                        <li><a href="#">Тарифы</a></li>
+                        <li><a href="#">Для бизнеса</a></li>
+                        <li><a href="#">Психологам</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Блог</h3>
+                    <ul>
+                        <li><a href="#">Вебинары</a></li>
+                        <li><a href="#">Подскаст</a></li>
+                        <li><a href="#">Сертификат</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column newsletter">
+                    <h3>Одно письмо в неделю со свежими новостями и акциями</h3>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Ваш e-mail" class="newsletter-input">
+                        <button class="newsletter-button">
+                            <img src="../assets_blog/images/img_group.svg" alt="Submit">
+                        </button>
+                    </div>
+                    <p class="newsletter-disclaimer">Подписываясь, я соглашаюсь на обработку персональных данных в соответствии с ФЗ РФ № 152-ФЗ «О персональных данных», а также с Политикой конфиденциальности</p>
+                </div>
+            </div>
+            <div class="footer-divider"></div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">©Youtalk, 2018 – 2022</p>
+                <div>
+                    <a href="#">Юридические документы</a>
+                    <a href="#" style="margin-left: 20px;">Способы оплаты</a>
+                </div>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <img src="../assets_blog/images/img_group_1.svg" alt="Social">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Filter tag functionality
+        const filterTags = document.querySelectorAll('.filter-tags .tag');
+
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                // Remove active class from all tags
+                filterTags.forEach(t => t.classList.remove('active'));
+
+                // Add active class to clicked tag
+                tag.classList.add('active');
+
+                // In a real application, this would filter the blog posts
+                console.log('Filtering by:', tag.textContent.trim());
+            });
+        });
+
+        // Load more functionality
+        const loadMoreButton = document.querySelector('.load-more');
+
+        loadMoreButton.addEventListener('click', () => {
+            // In a real application, this would load more blog posts
+            console.log('Loading more posts...');
+
+            // For demo purposes, we'll just show an alert
+            alert('В реальном приложении здесь бы загрузились дополнительные статьи');
+        });
+
+        // Newsletter form submission
+        const newsletterForm = document.querySelector('.newsletter-form');
+        const newsletterInput = document.querySelector('.newsletter-input');
+
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const email = newsletterInput.value.trim();
+
+            if (!email) {
+                alert('Пожалуйста, введите ваш email');
+                return;
+            }
+
+            if (!isValidEmail(email)) {
+                alert('Пожалуйста, введите корректный email');
+                return;
+            }
+
+            // In a real application, this would submit the form to a server
+            console.log('Subscribing email:', email);
+
+            // For demo purposes, we'll just show an alert
+            alert(`Спасибо за подписку! Письмо с подтверждением отправлено на ${email}`);
+
+            // Clear the input
+            newsletterInput.value = '';
+        });
+
+        // Add submit event listener to the button as well
+        const newsletterButton = document.querySelector('.newsletter-button');
+        newsletterButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            newsletterForm.dispatchEvent(new Event('submit'));
+        });
+
+        // Email validation function
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Blog card hover effect
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        blogCards.forEach(card => {
+            card.addEventListener('click', () => {
+                // In a real application, this would navigate to the blog post
+                console.log('Navigating to blog post:', card.querySelector('.blog-title').textContent);
+
+                // For demo purposes, we'll just show an alert
+                alert('В реальном приложении здесь бы открылась полная статья');
+            });
+        });
+    </script>
+</body>
+</html>

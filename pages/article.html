@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Как не утонуть в тревоге и управлять своими страхами | Youtalk</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16px;
+            line-height: 1.5;
+            color: #333333;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 76px;
+            background-color: #ffffff;
+            z-index: 100;
+            box-shadow: 0 1px 0 #eff5fb;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+        
+        .logo {
+            height: 51px;
+            width: 36px;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin-right: 30px;
+        }
+        
+        .nav-menu a {
+            font-size: 14px;
+            color: #333333;
+            text-decoration: none;
+        }
+        
+        .nav-menu a:hover {
+            color: #2963a3;
+        }
+        
+        .btn-find-psychologist {
+            background-color: #e3f5f5;
+            color: #03b2a5;
+            font-weight: 700;
+            font-size: 16px;
+            padding: 14px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-find-psychologist:hover {
+            background-color: #d0efef;
+        }
+        
+        /* Breadcrumbs */
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            margin-top: 92px;
+            margin-bottom: 20px;
+        }
+        
+        .breadcrumbs a, .breadcrumbs span {
+            font-size: 12px;
+            color: rgba(51, 51, 51, 0.7);
+            text-decoration: none;
+        }
+        
+        .breadcrumbs a:hover {
+            text-decoration: underline;
+        }
+        
+        .breadcrumb-arrow {
+            width: 16px;
+            height: 16px;
+            margin: 0 5px;
+        }
+        
+        /* Main Content */
+        .main-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+        
+        .article {
+            width: 690px;
+        }
+        
+        .article-title {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 56px;
+            margin-bottom: 20px;
+        }
+        
+        .article-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: #494949;
+        }
+        
+        .article-meta span {
+            margin-right: 8px;
+        }
+        
+        .article-image {
+            width: 100%;
+            height: auto;
+            margin-bottom: 24px;
+        }
+        
+        .article-content h3 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 30px;
+            margin: 30px 0 16px;
+        }
+        
+        .article-content p {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            margin-bottom: 16px;
+        }
+        
+        .article-content .image-caption {
+            font-size: 14px;
+            color: #868686;
+            margin-top: 8px;
+            margin-bottom: 24px;
+        }
+        
+        .article-content ul {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        
+        .article-content ul li {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+        }
+        
+        .article-content ul li img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .quote-box {
+            background-color: #f3f7fe;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .quote-box p {
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 8px;
+        }
+        
+        .quote-box .quote-author {
+            font-weight: 700;
+            margin-top: 16px;
+        }
+        
+        .exercise-box {
+            border-radius: 16px;
+            padding: 24px;
+            margin: 24px 0;
+        }
+        
+        .exercise-box-yellow {
+            background-color: #fdf9eb;
+        }
+        
+        .exercise-box-orange {
+            background-color: #fff3ea;
+        }
+        
+        .exercise-box-teal {
+            background-color: rgba(3, 178, 165, 0.1);
+        }
+        
+        .exercise-box h4 {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+            margin-bottom: 8px;
+        }
+        
+        .exercise-box p {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+        }
+        
+        .article-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .article-tags a {
+            color: #2963a3;
+            font-size: 14px;
+            text-decoration: none;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+        
+        .article-tags a:hover {
+            text-decoration: underline;
+        }
+        
+        .article-tags .tag-separator {
+            color: #494949;
+            margin-right: 8px;
+        }
+        
+        /* Table of Contents */
+        .table-of-contents {
+            margin: 30px 0;
+        }
+        
+        .table-of-contents h3 {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .table-of-contents ul {
+            list-style: none;
+        }
+        
+        .table-of-contents ul li {
+            margin-bottom: 16px;
+            position: relative;
+            padding-left: 32px;
+        }
+        
+        .table-of-contents ul li img {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+        }
+        
+        .table-of-contents ul li a {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 24px;
+            color: #333333;
+            text-decoration: underline;
+        }
+        
+        .table-of-contents ul li a:hover {
+            color: #2963a3;
+        }
+        
+        .table-of-contents ul li ul {
+            margin-top: 8px;
+            margin-left: 24px;
+        }
+        
+        .table-of-contents ul li ul li {
+            margin-bottom: 8px;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 512px;
+        }
+        
+        .sidebar-card {
+            border-radius: 16px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .loading-card {
+            background-color: #e6f0fd;
+            padding: 24px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .loading-card img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .loading-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 24px;
+            margin-top: 16px;
+            margin-bottom: 8px;
+        }
+        
+        .loading-card p {
+            font-size: 14px;
+            line-height: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .psychologist-card {
+            background-color: #ffffff;
+            border: 1px solid #dedede;
+            padding: 16px;
+            position: relative;
+        }
+        
+        .psychologist-card .badge-container {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .psychologist-card .badge {
+            background-color: rgba(243, 244, 248, 0.7);
+            border-radius: 6px;
+            padding: 4px 6px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .psychologist-card .badge img {
+            width: 16px;
+            height: 16px;
+            margin-right: 4px;
+        }
+        
+        .psychologist-card .badge span {
+            font-size: 12px;
+            color: #333333;
+        }
+        
+        .psychologist-card .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
+            margin: 24px auto;
+            display: block;
+        }
+        
+        .psychologist-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 25px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        .psychologist-card h4 {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 20px;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        
+        .psychologist-card .profile-meta {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 16px;
+            color: #a2a7b1;
+            font-size: 14px;
+        }
+        
+        .psychologist-card .profile-meta .separator {
+            width: 4px;
+            height: 4px;
+            background-color: #a2a7b1;
+            border-radius: 50%;
+            margin: 0 8px;
+        }
+        
+        .psychologist-card .divider {
+            height: 1px;
+            background-color: #dedede;
+            margin: 16px 0;
+        }
+        
+        .psychologist-card h5 {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+            margin-bottom: 16px;
+        }
+        
+        .psychologist-card .specialties {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+        
+        .psychologist-card .specialties li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 8px;
+        }
+        
+        .psychologist-card .specialties li img {
+            width: 20px;
+            height: 20px;
+            margin-right: 4px;
+        }
+        
+        .psychologist-card .specialties li span {
+            font-size: 14px;
+            line-height: 18px;
+        }
+        
+        .gift-card {
+            background-color: #2963a3;
+            color: #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gift-card h3 {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 40px;
+            text-align: center;
+            margin: 60px 24px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .gift-card img {
+            position: absolute;
+            z-index: 1;
+        }
+        
+        .package-card {
+            background-color: #ffffff;
+            border: 1px solid #dedede;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0px 30px 50px #eff5fb;
+        }
+        
+        .package-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 30px;
+            color: #2963a3;
+            margin-bottom: 4px;
+        }
+        
+        .package-card h4 {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 22px;
+            color: #2963a3;
+            margin-bottom: 16px;
+        }
+        
+        .package-card p {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 14px;
+            line-height: 20px;
+            color: #011531;
+            margin-bottom: 16px;
+        }
+        
+        .package-card .price {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 30px;
+            margin: 16px 0;
+        }
+        
+        .package-card .images-container {
+            position: relative;
+            height: 112px;
+            margin-bottom: 16px;
+        }
+        
+        .package-card .images-container img:first-child {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border-radius: 24px;
+        }
+        
+        .package-card .images-container img:last-child {
+            position: absolute;
+            right: 30px;
+            bottom: 12px;
+            border-radius: 24px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            margin: 60px 0;
+            padding: 60px 0;
+            border-top: 1px solid #dedede;
+        }
+        
+        .cta-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .cta-text {
+            width: 50%;
+        }
+        
+        .cta-text h2 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 56px;
+            margin-bottom: 24px;
+        }
+        
+        .cta-text p {
+            font-size: 18px;
+            line-height: 22px;
+            margin-bottom: 32px;
+        }
+        
+        .cta-image {
+            width: 40%;
+        }
+        
+        .cta-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: #2963a3;
+            color: #ffffff;
+            padding: 40px 0;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column {
+            width: 25%;
+        }
+        
+        .footer-column h3 {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 16px;
+        }
+        
+        .footer-column ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 20px;
+        }
+        
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-newsletter h3 {
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 22px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-newsletter .newsletter-form {
+            display: flex;
+            margin-bottom: 8px;
+        }
+        
+        .footer-newsletter .newsletter-input {
+            flex-grow: 1;
+            height: 48px;
+            background-color: #ffffff;
+            border: 1px solid rgba(157, 157, 157, 0.2);
+            border-radius: 4px 0 0 4px;
+            padding: 0 16px;
+            font-size: 14px;
+            color: #9d9d9d;
+        }
+        
+        .footer-newsletter .newsletter-button {
+            width: 64px;
+            height: 48px;
+            background-color: #16c8bb;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .footer-newsletter .newsletter-button:hover {
+            background-color: #14b7ab;
+        }
+        
+        .footer-newsletter .newsletter-terms {
+            font-size: 12px;
+            line-height: 18px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(157, 157, 157, 0.3);
+            padding-top: 16px;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .footer-bottom .copyright {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .footer-bottom .footer-links {
+            display: flex;
+        }
+        
+        .footer-bottom .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            text-decoration: none;
+            margin-left: 48px;
+        }
+        
+        .footer-bottom .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .btn {
+            display: inline-block;
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+            padding: 14px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: #35b3a9;
+            color: #ffffff;
+        }
+        
+        .btn-primary:hover {
+            background-color: #2e9a91;
+        }
+        
+        .btn-secondary {
+            background-color: #15c7ba;
+            color: #ffffff;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #13b5a9;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .article, .sidebar {
+                width: 100%;
+            }
+            
+            .sidebar {
+                margin-top: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-wrap: wrap;
+            }
+            
+            .nav-menu {
+                order: 3;
+                width: 100%;
+                margin-top: 16px;
+                justify-content: space-between;
+            }
+            
+            .nav-menu li {
+                margin-right: 0;
+            }
+            
+            .article-title {
+                font-size: 36px;
+                line-height: 42px;
+            }
+            
+            .cta-content {
+                flex-direction: column;
+            }
+            
+            .cta-text, .cta-image {
+                width: 100%;
+            }
+            
+            .cta-image {
+                margin-top: 30px;
+            }
+            
+            .footer-content {
+                flex-wrap: wrap;
+            }
+            
+            .footer-column {
+                width: 50%;
+                margin-bottom: 30px;
+            }
+            
+            .footer-newsletter {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .article-title {
+                font-size: 28px;
+                line-height: 34px;
+            }
+            
+            .footer-column {
+                width: 100%;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+            }
+            
+            .footer-bottom .footer-links {
+                margin-top: 16px;
+                flex-wrap: wrap;
+            }
+            
+            .footer-bottom .footer-links a {
+                margin-left: 0;
+                margin-right: 24px;
+                margin-bottom: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/">
+                    <img src="../assets_article/images/img_frame_36x51.svg" alt="Youtalk Logo" class="logo">
+                </a>
+                <ul class="nav-menu">
+                    <li><a href="#">О нас</a></li>
+                    <li><a href="#">Тарифы</a></li>
+                    <li><a href="#">Для бизнеса</a></li>
+                    <li><a href="#">Психологам</a></li>
+                    <li><a href="#">Материалы</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+                <a href="#" class="btn-find-psychologist">Подобрать психолога</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="breadcrumbs">
+            <a href="#">Главная</a>
+            <img src="../assets_article/images/img_arrow.svg" alt=">" class="breadcrumb-arrow">
+            <a href="#">Блог</a>
+            <img src="../assets_article/images/img_arrow.svg" alt=">" class="breadcrumb-arrow">
+            <span>Как не утонуть в тревоге и управлять своими страхами</span>
+        </div>
+
+        <div class="main-content">
+            <article class="article">
+                <h1 class="article-title">Как не утонуть в тревоге и управлять своими страхами</h1>
+                <div class="article-meta">
+                    <span>Автор: Лиза Файнтух</span>
+                    <span>·</span>
+                    <span>21.08.2021</span>
+                </div>
+
+                <img src="../assets_article/images/img_image.png" alt="Человек в воде, символизирующий тревогу" class="article-image">
+
+                <div class="table-of-contents">
+                    <h3>Содержание</h3>
+                    <ul>
+                        <li>
+                            <img src="../assets_article/images/img_frame.svg" alt="Иконка">
+                            <a href="#section1">Как понять, что отношения с мамой были дисфункциональными и привели к травме?</a>
+                        </li>
+                        <li>
+                            <img src="../assets_article/images/img_frame.svg" alt="Иконка">
+                            <a href="#section2">Мама привет!</a>
+                            <ul>
+                                <li><a href="#subsection1">Под под заголовок под заголовком</a></li>
+                                <li><a href="#subsection2">Под под под заголовок под заголовком</a></li>
+                                <li><a href="#subsection3">Под под под под заголовок под заголовком</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <img src="../assets_article/images/img_frame.svg" alt="Иконка">
+                            <a href="#section3">Ну вот опять заголовок который как «привет мама»</a>
+                        </li>
+                        <li>
+                            <img src="../assets_article/images/img_frame.svg" alt="Иконка">
+                            <a href="#section4">Как понять, что вы страдаете от материнской травмы?</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="article-content">
+                    <div class="quote-box">
+                        <img src="../assets_article/images/img_vector_36x55.svg" alt="Кавычки" style="margin-bottom: 10px;">
+                        <p>Мы знаем, что нуждаться в помощи и поддержке в трудные периоды жизни абсолютно нормально для любого человека, и стремимся сделать психотерапию безопасной, удобной и доступной каждому</p>
+                        <p class="quote-author">Ана Крымская</p>
+                    </div>
+
+                    <h3 id="section1">Что еще можно делать с тревогой?</h3>
+                    <ul>
+                        <li>
+                            <img src="../assets_article/images/img_frame.svg" alt="Иконка">
+                            <span>Управлять ей через что-то внешнее: включать музыку, которая создает другое настроение, сесть за работу с цифрами, которая быстренько активизирует другие участки мозга, читать блоги, которые вас успокаивают и отвлекают.</span>
+                        </li>
+                        <li>
+                            <img src="../assets_article/images/img_frame.svg" alt="Иконка">
+                            <span>А еще порой можно разрешить себе тревогу заесть чем-то вкусным. Это, конечно, не самая здоровая стратегия, но в ряде ситуаций можно считать ее вполне рабочей. Особенно, когда внутренний ресурс на нуле, а поддерживающее окружение не в доступе.</span>
+                        </li>
+                    </ul>
+
+                    <img src="../assets_article/images/img_rectangle_331x690.png" alt="Изображение, связанное с тревогой" class="article-image">
+                    <p class="image-caption">Онтогенез речи отражает групповой эриксоновский гипноз.</p>
+
+                    <h3>Заголовок h3</h3>
+                    <p>Один из самых важных навыков, которые может дать работа с психотерапевтом - умение в разных ситуациях по-разному обходиться со своими эмоциями. Снять этот процесс с автопилота и перевести его в поле сознания.</p>
+                    <p>Давайте, к примеру, разберем тревогу. Можно разложить перед собой целую коллекцию доступных реакций и выбрать нужную:</p>
+
+                    <img src="../assets_article/images/img_rectangle.png" alt="Изображение с примером" class="article-image" style="width: 282px; height: 380px; float: left; margin-right: 24px;">
+                    <p>Чем шире доступный вам репертуар реакций и чем более осознанно вы можете выбирать из него то, что лучше всего подойдет в каждой конкретной ситуации, тем больше будет ваша устойчивость к стрессу, депрессии, неопределенности, да и к жизни в целом.<br>А еще порой можно разрешить себе тревогу заесть чем-то вкусным.</p>
+
+                    <div style="clear: both;"></div>
+
+                    <p>Чем шире доступный вам репертуар реакций и чем более осознанно вы можете выбирать из него то, что лучше всего подойдет в каждой конкретной ситуации, тем больше будет ваша устойчивость к стрессу, депрессии, неопределенности, да и к жизни в целом.</p>
+
+                    <div class="exercise-box exercise-box-yellow">
+                        <h4>Упражнение #1</h4>
+                        <p>Нужно последовательно напрягать и расслаблять каждую мышцу в теле на несколько секунд. Напрягать стоит довольно сильно, чтобы потом отчетливее ощущать расслабляющий эффект. Начать можно с пальцев ног и постепенно подниматься вверх. Смысл в том, чтобы через напряжение дать стрессу выход, а затем вновь привести себя в спокойное состояние через расслабление</p>
+                    </div>
+
+                    <h3 id="section2">Что еще можно делать с тревогой?</h3>
+                    <ul>
+                        <li>
+                            <img src="../assets_article/images/img_frame.svg" alt="Иконка">
+                            <span>Управлять ей через что-то внешнее: включать музыку, которая создает другое настроение, сесть за работу с цифрами, которая быстренько активизирует другие участки мозга, читать блоги, которые вас успокаивают и отвлекают.</span>
+                        </li>
+                        <li>
+                            <img src="../assets_article/images/img_frame.svg" alt="Иконка">
+                            <span>А еще порой можно разрешить себе тревогу заесть чем-то вкусным. Это, конечно, не самая здоровая стратегия, но в ряде ситуаций можно считать ее вполне рабочей. Особенно, когда внутренний ресурс на нуле, а поддерживающее окружение не в доступе.</span>
+                        </li>
+                    </ul>
+
+                    <div style="display: flex; justify-content: space-between; margin: 30px 0;">
+                        <div style="width: 48%;">
+                            <img src="../assets_article/images/img_rectangle_174x281.png" alt="Изображение 1" style="width: 100%; height: auto;">
+                            <p>Чем шире доступный вам репертуар реакций и чем более осознанно вы можете выбирать из него то, что лучше всего подойдет в каждой конкретной ситуации, тем больше будет ваша устойчивость к стрессу.</p>
+                        </div>
+                        <div style="width: 48%;">
+                            <img src="../assets_article/images/img_rectangle_1.png" alt="Изображение 2" style="width: 100%; height: auto;">
+                            <p>Чем шире доступный вам репертуар реакций и чем более осознанно вы можете выбирать из него то, что лучше всего подойдет в каждой конкретной ситуации, тем больше будет ваша устойчивость к стрессу, депрессии, неопределенности, да и к жизни в целом.</p>
+                        </div>
+                    </div>
+
+                    <p>Одна из ключевых задач психотерапии как раз и заключается в том, чтобы этот репертуар расширять и обучать человека пользоваться доступными ему реакциями в той последовательности, пропорции и объеме, которые подходят именно ему. Без оглядки на то, "как правильно" или "как у других".</p>
+
+                    <div class="exercise-box exercise-box-teal">
+                        <h4>Упражнение #1</h4>
+                        <p>Нужно последовательно напрягать и расслаблять каждую мышцу в теле на несколько секунд. Напрягать стоит довольно сильно, чтобы потом отчетливее ощущать расслабляющий эффект. Начать можно с пальцев ног и постепенно подниматься вверх. Смысл в том, чтобы через напряжение дать стрессу выход, а затем вновь привести себя в спокойное состояние через расслабление</p>
+                    </div>
+
+                    <div class="article-tags">
+                        <a href="#">Self</a>
+                        <span class="tag-separator">·</span>
+                        <a href="#">Самооценка и самопринятие</a>
+                        <span class="tag-separator">·</span>
+                        <a href="#">Самооценка и самопринятие</a>
+                        <span class="tag-separator">·</span>
+                        <a href="#">Упражнения</a>
+                    </div>
+                    <div class="article-tags">
+                        <a href="#">Чувства и эмоции</a>
+                        <span class="tag-separator">·</span>
+                        <a href="#">Самооценка и самопринятие</a>
+                        <span class="tag-separator">·</span>
+                        <a href="#">Тревога</a>
+                    </div>
+                </div>
+            </article>
+
+            <aside class="sidebar">
+                <div class="sidebar-card loading-card">
+                    <img src="../assets_article/images/img_vector_174x239.png" alt="Иллюстрация" style="position: absolute; top: 56px; left: 12px;">
+                    <img src="../assets_article/images/img_vector_132x152.svg" alt="Иллюстрация" style="position: absolute; top: 24px; left: 64px;">
+                    <img src="../assets_article/images/img_image_182x257.png" alt="Иллюстрация" style="position: absolute; top: 48px; left: 12px;">
+                    <div style="margin-top: 220px;">
+                        <h3>Загружаем свободные окошки</h3>
+                        <p>Все в порядке, сейчас мы перенаправим вас в сервис записи Qlick, через который удобно выбрать дату, время встречи и оплатить её</p>
+                        <a href="#" class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+
+                <div class="sidebar-card psychologist-card">
+                    <div class="badge-container">
+                        <div class="badge">
+                            <img src="../assets_article/images/img_.png" alt="Иконка">
+                            <span>Переписка</span>
+                        </div>
+                        <div class="badge">
+                            <img src="../assets_article/images/img__20x16.png" alt="Иконка">
+                            <span>Видео</span>
+                        </div>
+                    </div>
+                    <img src="../assets_article/images/img_rectangle_120x120.png" alt="Фото психолога" class="profile-image">
+                    <h3>Лилия</h3>
+                    <h4>Психолог</h4>
+                    <div class="profile-meta">
+                        <span>Опыт6 лет</span>
+                        <div class="separator"></div>
+                        <span>43 года</span>
+                    </div>
+                    <div class="divider"></div>
+                    <h5>С чем работает психолог</h5>
+                    <ul class="specialties">
+                        <li>
+                            <img src="../assets_article/images/img_frame.svg" alt="Иконка">
+                            <span>Тревога, тревожности</span>
+                        </li>
+                        <li>
+                            <img src="../assets_article/images/img_frame.svg" alt="Иконка">
+                            <span>Подавленность</span>
+                        </li>
+                        <li>
+                            <img src="../assets_article/images/img_frame.svg" alt="Иконка">
+                            <span>Тревога и панические атаки</span>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary" style="width: 100%;">Подробнее</a>
+                </div>
+
+                <div class="sidebar-card gift-card">
+                    <img src="../assets_article/images/img_image_192x280.png" alt="Фон" style="top: 0; right: 2px;">
+                    <img src="../assets_article/images/img_image_140x167.png" alt="Подарок" style="bottom: 0; right: 104px;">
+                    <img src="../assets_article/images/img_image_76x107.png" alt="Подарок" style="bottom: 0; right: 175px;">
+                    <img src="../assets_article/images/img_image_112x136.png" alt="Подарок" style="bottom: 0; left: 0;">
+                    <h3>Дарите заботу</h3>
+                </div>
+
+                <div class="sidebar-card package-card">
+                    <h3>8</h3>
+                    <h4>Видео сессий</h4>
+                    <p>Проработать небольшие проблемы и продвинуться в решении сложных запросов</p>
+                    <div class="price">18 500 ₽</div>
+                    <div class="images-container">
+                        <img src="../assets_article/images/img_image_85x112.png" alt="Иллюстрация">
+                        <img src="../assets_article/images/img_image_72x88.png" alt="Иллюстрация">
+                    </div>
+                    <a href="#" class="btn btn-primary">Купить</a>
+                </div>
+            </aside>
+        </div>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <div class="cta-text">
+                    <h2>Откликается проблема?</h2>
+                    <p>Поможем подобрать специалиста по работе с подобным запросом</p>
+                    <a href="#" class="btn btn-secondary">Подобрать психолога</a>
+                </div>
+                <div class="cta-image">
+                    <img src="../assets_article/images/img_frame_330x520.png" alt="Иллюстрация с людьми">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>О нас</h3>
+                    <ul>
+                        <li><a href="#">О нас</a></li>
+                        <li><a href="#">Тарифы</a></li>
+                        <li><a href="#">Для бизнеса</a></li>
+                        <li><a href="#">Психологам</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Блог</h3>
+                    <ul>
+                        <li><a href="#">Блог</a></li>
+                        <li><a href="#">Вебинары</a></li>
+                        <li><a href="#">Подскаст</a></li>
+                        <li><a href="#">Сертификат</a></li>
+                        <li><a href="#">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h3>Одно письмо в неделю со свежими новостями и акциями</h3>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Ваш e-mail" class="newsletter-input">
+                        <button class="newsletter-button">
+                            <img src="../assets_article/images/img_group_24x24.svg" alt="Отправить">
+                        </button>
+                    </div>
+                    <p class="newsletter-terms">Подписываясь, я соглашаюсь на обработку персональных данных в соответствии с ФЗ РФ № 152-ФЗ «О персональных данных», а также с Политикой конфиденциальности</p>
+                </div>
+                <div class="footer-column">
+                    <img src="../assets_article/images/img_group_1.svg" alt="Социальные сети" style="width: 122px; height: 221px;">
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="copyright">©Youtalk, 2018 – 2022</div>
+                <div class="footer-links">
+                    <a href="#">Юридические документы</a>
+                    <a href="#">Способы оплаты</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId !== '#') {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
+            
+            // Simulate loading state for the loading card
+            setTimeout(function() {
+                const loadingCard = document.querySelector('.loading-card');
+                if (loadingCard) {
+                    loadingCard.innerHTML = `
+                        <h3>Выберите удобное время</h3>
+                        <p>Запишитесь на консультацию к психологу в любое удобное для вас время</p>
+                        <a href="#" class="btn btn-primary">Записаться</a>
+                    `;
+                }
+            }, 3000);
+            
+            // Add active state to exercise boxes on click
+            const exerciseBoxes = document.querySelectorAll('.exercise-box');
+            exerciseBoxes.forEach(box => {
+                box.addEventListener('click', function() {
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1)';
+                    }, 200);
+                });
+            });
+            
+            // Newsletter form validation
+            const newsletterForm = document.querySelector('.newsletter-form');
+            const newsletterInput = document.querySelector('.newsletter-input');
+            const newsletterButton = document.querySelector('.newsletter-button');
+            
+            newsletterButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const email = newsletterInput.value.trim();
+                if (email === '') {
+                    newsletterInput.style.borderColor = '#ff3b30';
+                    newsletterInput.placeholder = 'Пожалуйста, введите email';
+                } else if (!isValidEmail(email)) {
+                    newsletterInput.style.borderColor = '#ff3b30';
+                    newsletterInput.value = '';
+                    newsletterInput.placeholder = 'Пожалуйста, введите корректный email';
+                } else {
+                    newsletterInput.style.borderColor = '#16c8bb';
+                    newsletterInput.value = '';
+                    newsletterInput.placeholder = 'Спасибо за подписку!';
+                    setTimeout(() => {
+                        newsletterInput.placeholder = 'Ваш e-mail';
+                        newsletterInput.style.borderColor = '';
+                    }, 3000);
+                }
+            });
+            
+            function isValidEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(email);
+            }
+            
+            // Simulate psychologist card interaction
+            const psychologistCard = document.querySelector('.psychologist-card');
+            if (psychologistCard) {
+                const specialties = psychologistCard.querySelectorAll('.specialties li');
+                specialties.forEach(specialty => {
+                    specialty.addEventListener('mouseenter', function() {
+                        this.style.backgroundColor = '#f5f5f5';
+                        this.style.borderRadius = '4px';
+                    });
+                    specialty.addEventListener('mouseleave', function() {
+                        this.style.backgroundColor = '';
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
